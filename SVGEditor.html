@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>SVG 编辑器</title>
     <style>
         #toolbox {
@@ -33,7 +33,7 @@
             top: 10px;
             bottom: 10px;
             right: 10px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,.4);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, .4);
             border-radius: 5px;
         }
 
@@ -45,45 +45,50 @@
     </style>
 </head>
 <body>
-    <div id="toolbox">
-        <h2>创建</h2>
-        <form id="create-shape">
-            <button type="button" create="rect">Rect</button>
-            <button type="button" create="circle">Circle</button>
-            <button type="button" create="ellipse">Ellipse</button>
-            <button type="button" create="line">Line</button>
-        </form>
-        <h2>形状</h2>
-        <form id="shape-attrs">
-            请先创建图形
-        </form>
-        <h2>外观和变换</h2>
-        <form id="look-and-transform" disabled="disabled">
-            <p>
-                <label style="display: inline;">填充</label>
-                <input id="fill" type="color" value="#ffffff" />
-            </p>
-            <p>
-                <label style="display: inline;">描边</label>
-                <input id="stroke" type="color" value="#ff0000" />
-                <input id="strokeWidth" type="range" value="1" />
-            </p>
-            <p>
-                <label>translateX</label>
-                <input id="translateX" type="range" min="-400" max="400" value="0" />
+<div id="toolbox">
+    <h2>创建</h2>
 
-                <label>translateY</label>
-                <input id="translateY" type="range" min="-400" max="400" value="0" />
+    <form id="create-shape">
+        <button type="button" create="rect">Rect</button>
+        <button type="button" create="circle">Circle</button>
+        <button type="button" create="ellipse">Ellipse</button>
+        <button type="button" create="line">Line</button>
+    </form>
+    <h2>形状</h2>
 
-                <label>rotate</label>
-                <input id="rotate" type="range" min="-180" max="180" value="0" />
+    <form id="shape-attrs">
+        请先创建图形
+    </form>
+    <h2>外观和变换</h2>
 
-                <label>scale</label>
-                <input id="scale" type="range" min="-1" max="2" step="0.01" value="1" />
-            </p>
-        </form>
-    </div>
-    <div id="canvas"></div>
+    <form id="look-and-transform" disabled="disabled">
+        <p>
+            <label style="display: inline;">填充</label>
+            <input id="fill" type="color" value="#ffffff"/>
+        </p>
+
+        <p>
+            <label style="display: inline;">描边</label>
+            <input id="stroke" type="color" value="#ff0000"/>
+            <input id="strokeWidth" type="range" value="1"/>
+        </p>
+
+        <p>
+            <label>translateX</label>
+            <input id="translateX" type="range" min="-400" max="400" value="0"/>
+
+            <label>translateY</label>
+            <input id="translateY" type="range" min="-400" max="400" value="0"/>
+
+            <label>rotate</label>
+            <input id="rotate" type="range" min="-180" max="180" value="0"/>
+
+            <label>scale</label>
+            <input id="scale" type="range" min="-1" max="2" step="0.01" value="1"/>
+        </p>
+    </form>
+</div>
+<div id="canvas"></div>
 </body>
 <script>
     var SVG_NS = 'http://www.w3.org/2000/svg';
@@ -109,19 +114,19 @@
     var svg = createSVG();
     var selected = null;
 
-    createForm.addEventListener('click', function(e) {
+    createForm.addEventListener('click', function (e) {
         if (e.target.tagName.toLowerCase() == 'button') {
             create(e.target.getAttribute('create'));
         }
     });
 
-    attrForm.addEventListener('input', function(e) {
+    attrForm.addEventListener('input', function (e) {
         if (e.target.tagName.toLowerCase() != 'input') return;
         var handle = e.target;
         selected.setAttribute(handle.name, handle.value);
     });
 
-    lookForm.addEventListener('input', function(e) {
+    lookForm.addEventListener('input', function (e) {
         if (e.target.tagName.toLowerCase() != 'input') return;
         if (!selected) return;
         selected.setAttribute('fill', fill.value);
@@ -141,7 +146,7 @@
         svg.setAttribute('height', '100%');
         canvas.appendChild(svg);
 
-        svg.addEventListener('click', function(e) {
+        svg.addEventListener('click', function (e) {
             if (e.target.tagName.toLowerCase() in shapeInfo) {
                 select(e.target);
             }
@@ -161,7 +166,7 @@
 
         attrForm.innerHTML = "";
 
-        while(attrs.length) {
+        while (attrs.length) {
             attr = attrs.shift().split(':');
             name = attr[0];
             value = shape.getAttribute(name) || attr[1];
@@ -179,7 +184,7 @@
     }
 
     function createHandle(shape, name, value) {
-        
+
 
         var label = document.createElement('label');
         label.textContent = name;

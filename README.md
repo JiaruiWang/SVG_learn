@@ -14,3 +14,24 @@
  - element.appendChild(childElement)
  - element.setAttribute(name, value)
  - element.getAttribute(name)
+
+##SVG的世界，视野，视窗
+```
+<svg xmlns="..."
+  width="800" height="600"
+  viewBox="0 0 400 300"
+  preserveAspectRatio="xMidYMid meet">
+</svg>
+```
+
+ - width, height 控制视窗
+ - SVG代码 定义世界
+ - viewBox, preserveAspectRatio 控制视野
+
+##图形分组
+
+
+##SVG坐标系
+
+
+##坐标变换
