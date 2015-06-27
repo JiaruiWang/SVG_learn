@@ -151,8 +151,8 @@ sin() cos()  0
  - 命令可以重复参数表示重复执行同一条命令
 
 
- ##SVG文本
- ###`<text>
+##SVG文本
+###`<text>`
   - x和y属性 定位标准
   - dx和dy 字形偏移
   - style 设置样式
@@ -166,6 +166,10 @@ sin() cos()  0
  - text-anchor
  - dominant-baseline
  - 模拟
+
+###路径文本`<textPath>`
+
+
 
 
 
