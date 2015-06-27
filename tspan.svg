@@ -5,9 +5,8 @@
         </pattern>
     </defs>
     <rect width="1200" height="1000" fill="url(#grid)"></rect>
-    <text x="100" y="100">
-        <tspan fill="red">AB</tspan>
-        <tspan stroke="green">CDE</tspan>
+    <text x="100" y="100" style="font-size: 50px">
+        <tspan fill="red">AB</tspan><tspan stroke="green" fill="none">CDE</tspan>
     </text>
     <path d="M100,0V200M0,100H200" stroke="red" />
 </svg>
