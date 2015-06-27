@@ -162,6 +162,10 @@ sin() cos()  0
  - dy往下传递
  - `<text>` 上再设置就无效了
 
+###垂直居中
+ - text-anchor
+ - dominant-baseline
+ - 模拟
 
 
 

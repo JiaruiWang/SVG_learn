@@ -12,7 +12,7 @@
         </pattern>
     </defs>
     <rect width="1200" height="1000" fill="url(#grid)"></rect>
-    <text id="sintext" x="0" y="200" >ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ</text>
+    <text id="sintext" x="0" y="200" style="font-weight:900"></text>
     <!--<path d="M100,0V200M0,100H200" stroke="red" />-->
 </svg>
 <script>
@@ -62,6 +62,8 @@
 //        frame();
 //    }, 1000);
 
+
+    var text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
     var n = 52;
     var x = [];
     var y = null;
@@ -70,7 +72,14 @@
     var w = 0.02;
     var t = 0;
 
-    while(i--) x.push(10);
+    while (i--) {
+        x.push(10);
+        var tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+        tspan.textContent = text[n - i - 1];
+        sintext.appendChild(tspan);
+        var h = Math.round( 360 / 52 * i);
+        tspan.setAttribute('fill', 'hsl('+ h +',100%,80%)');
+    }
     function arrange(t) {
         y = [];
         var ly = 0, cy;
@@ -88,7 +97,7 @@
 
 
     function frame() {
-        t += 0.05;
+        t += 0.02;
         arrange(t);
         render();
         requestAnimationFrame(frame);
