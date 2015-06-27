@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000">
+    <defs>
+        <pattern id="grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path stroke="grey" fill="none" d="M0,0H20V20"></path>
+        </pattern>
+    </defs>
+    <rect width="1200" height="1000" fill="url(#grid)"></rect>
+    <text id="sintext" x="0" y="200" >ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ</text>
+    <!--<path d="M100,0V200M0,100H200" stroke="red" />-->
+</svg>
+<script>
+    // y = sin(w*x+t) * s
+    // x = [20,20,20,20,20,20,20,....]
+
+//    var n = 26;
+//
+//    var x = [];
+//    var y = [];
+//    var i = n;
+//    var t = 0;
+//
+//    var s = 100;
+//    var w = 0.02;
+//
+//    while (i--) x.push(20);
+//
+//    function arrange(t) {
+////        y = x.map(function(v,i,a) {
+////            return s * Math.sin( w * v + t);
+////        });
+//        var ly = 0, cy;
+//        for (i = 0; i < n; ++i) {
+//            cy = -s * Math.sin(w*i*20+t);
+//            y.push(cy - ly);
+//            console.log(cy-ly);
+//            ly = cy;
+//
+//        }
+//    }
+//
+//    function render() {
+////        var sintext = document.getElementById("sintext");
+//        sintext.setAttribute('dx', x.join(' '));
+//        sintext.setAttribute('dy', y.join(' '));
+//    }
+//
+//    function frame() {
+//        t += 0.01;
+//        arrange(t);
+//        render();
+//
+//    }
+//
+//    setInterval(function() {
+//        frame();
+//    }, 1000);
+
+    var n = 52;
+    var x = [];
+    var y = null;
+    var i = n;
+    var s = 100;
+    var w = 0.02;
+    var t = 0;
+
+    while(i--) x.push(10);
+    function arrange(t) {
+        y = [];
+        var ly = 0, cy;
+        for (i = 0; i < n; ++i) {
+            cy = -s*Math.sin(w*i*20+t);
+            y.push(cy-ly);
+            ly = cy;
+        }
+    }
+
+    function render() {
+        sintext.setAttribute('dx', x.join(' '));
+        sintext.setAttribute('dy', y.join(' '));
+    }
+
+
+    function frame() {
+        t += 0.05;
+        arrange(t);
+        render();
+        requestAnimationFrame(frame);
+    }
+
+    frame();
+
+//    setInterval(frame, 10);
+</script>
+</body>
+</html>

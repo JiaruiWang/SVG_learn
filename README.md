@@ -125,5 +125,42 @@ sin() cos()  0
 </svg>
 ```
 
+##Path
+###Path字符串
+```
+<path d="M0,0L10,20C30-10,40,20,100,100" stroke="red">
+```
+命令+参数
+###命令汇总
+ - M	moveto  移动到	(x y)+
+ - Z	closepath  关闭路径	(none)
+ - L	lineto  画线到	(x y)+
+ - H	horizontal lineto  水平线到	x+
+ - V	vertical lineto  垂直线到	y+
+ - C	curveto  三次贝塞尔曲线到	(x1 y1 x2 y2 x y)+
+ - S	smooth curveto  光滑三次贝塞尔曲线到	(x2 y2 x y)+
+ - Q	quadratic Bézier curveto  二次贝塞尔曲线到	(x1 y1 x y)+
+ - T	smooth quadratic Bézier curveto  光滑二次贝塞尔曲线到	(x y)+
+ - A	elliptical arc  椭圆弧	(rx ry x-axis-rotation large-arc-flag sweep-flag x y)+
+ - R	Catmull-Rom curveto*  Catmull-Rom曲线	x1 y1 (x y)+
+
+###命令规律
+ - 以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。
+ - 最后的参数表示最终要到达的位置
+ - 上一个命令的结束位置就是下一个命令的开始位置
+ - 命令可以重复参数表示重复执行同一条命令
+
+
+ ##SVG文本
+ ###`<text>
+  - x和y属性 定位标准
+  - dx和dy 字形偏移
+  - style 设置样式
+  - 没办法换行
+
+###`<tspan>`
+
+
+
 
 
