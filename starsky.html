@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #001122;
+            line-height: 0;
+            font-size: 0;
+        }
+    </style>
+</head>
+<body>
+    <svg width="100%" height="100%" viewBox="-400 -300 800 600" preserveAspectRatio="xMidYMid slice">
+
+        <defs>
+            <polygon id="star" points="0 -10 2 -2 10 0 2 2 0 10 -2 2 -10 0 -2 -2" fill="rgb(255,255,255)"></polygon>
+        </defs>
+        <g id="star-group"></g>
+    </svg>
+    <script>
+
+        var SVG_NS = 'http://www.w3.org/2000/svg';
+        var XLINK_NS = 'http://www.w3.org/1999/xlink';
+
+        var svg = document.querySelector('svg');
+
+
+
+        function render() {
+            var starRef = document.getElementById("star");
+            var starGroup = document.getElementById('star-group');
+            var num = 500;
+            var star;
+
+            for (var i = 0; i < num; i++) {
+                star = use(starRef);
+                star.setAttribute('opacity', random(0.1, 0.4));
+                star.setAttribute('transform', 'translate(' + random(-400, 400) + ',' + random(-300, 50) + ')' + 'scale(' + random(0.1, 0.6) + ')');
+                starGroup.appendChild(star);
+            }
+
+        }
+
+
+        function random(min, max) {
+            return min + (max - min) * Math.random();
+        }
+
+
+        function use(o) {
+            var _use = document.createElementNS(SVG_NS, 'use');
+            _use.setAttributeNS(XLINK_NS, 'xlink:href', '#' + o.id);
+            return _use;
+        }
+
+        render();
+    </script>
+</body>
+</html>

@@ -177,7 +177,20 @@ sin() cos()  0
 </svg>
 ```
 
-超出路径的文本不会没渲染
+ - 超出路径的文本不会没渲染
+ - x、text-anchor、startOffset 确定排列的起始位置
+ - dx、dy 切线和发现的方向的偏移
+
+###超链接`<a>`
+ - 可以添加到任意的图像上
+ - xlink:href 指定链接地址
+ - xlink:title 指定链接提示
+ - target
+
+##引用、裁剪、蒙版
+ - use
+ - clip
+ - mask
 
 
 
