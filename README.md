@@ -168,7 +168,16 @@ sin() cos()  0
  - 模拟
 
 ###路径文本`<textPath>`
+```
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"  xmlns:xlink="http://www.w3.org/1999/xlink" >
+	<path id="mypath" d="M50 100Q350 50 350 250T450 250" style="fill:none;stroke:red;stroke-width:5;" />
+	<text x="10" y="20" style="fill:green;font-size:32px;">
+		<textPath xlink:href="#mypath">www.lishengcn.cnwww.lishengcn.cn</textPath>
+	</text>
+</svg>
+```
 
+超出路径的文本不会没渲染
 
 
 

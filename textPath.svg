@@ -1,6 +1,6 @@
-<path id="path1" d="M 100 200 Q 200 100 300 200 T 500 200" stroke="rgb(0,255,0)" fill="none" />
-<text>
-    <textPath xlink:href="#path1">
-    这个文字先上去，又下来了。Upside down in English！
-    </textPath>
-</text>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"  xmlns:xlink="http://www.w3.org/1999/xlink" >
+	<path id="mypath" d="M50 100Q350 50 350 250T450 250" style="fill:none;stroke:red;stroke-width:5;" />
+	<text x="10" y="20" style="fill:green;font-size:32px;">
+		<textPath xlink:href="#mypath">www.lishengcn.cnwww.lishengcn.cn</textPath>
+	</text>
+</svg>
