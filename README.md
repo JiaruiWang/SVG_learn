@@ -188,9 +188,9 @@ sin() cos()  0
  - target
 
 ##引用、裁剪、蒙版
- - use
- - clip
- - mask
+ - use xlink:href="#id"
+ - clip clip-path="url(#id)"
+ - mask mask="url(#id)"
 
 
 
