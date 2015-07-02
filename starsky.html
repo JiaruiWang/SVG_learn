@@ -16,50 +16,98 @@
     </style>
 </head>
 <body>
-    <svg width="100%" height="100%" viewBox="-400 -300 800 600" preserveAspectRatio="xMidYMid slice">
+<svg width="100%" height="100%" viewBox="-400 -300 800 600" preserveAspectRatio="xMidYMid slice">
 
-        <defs>
-            <polygon id="star" points="0 -10 2 -2 10 0 2 2 0 10 -2 2 -10 0 -2 -2" fill="rgb(255,255,255)"></polygon>
-        </defs>
+    <defs>
+        <polygon id="star" points="0 -10 2 -2 10 0 2 2 0 10 -2 2 -10 0 -2 -2" fill="rgb(255,255,255)"></polygon>
+    </defs>
+    <g id="real">
         <g id="star-group"></g>
-    </svg>
-    <script>
+        <g id="moon">
+            <mask id="mask">
+                <circle cx="-200" cy="-100" r="80" fill="yellow"></circle>
+                <circle cx="-150" cy="-50" r="80" fill="black"></circle>
+            </mask>
+            <circle cx="-200" cy="-100" r="80" fill="yellow" mask="url(#mask)"></circle>
+        </g>
+        <g id="tower" transform="translate(250, 0)">
+            <defs>
+                <linearGradient id="tower" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#999"></stop>
+                    <stop offset="1" stop-color="#333"></stop>
+                </linearGradient>
+                <clipPath id="clip">
+                    <polygon points="0 0 -400 -30 -400 30">
+                        <animateTransform
+                                attributeName="transform"
+                                attributeType="XML"
+                                type="rotate"
+                                form="0"
+                                to="360"
+                                dur="10s"
+                                repeatCount="indefinite"></animateTransform>
+                    </polygon>
+                    <circle cx="0" cy="0" r="5"></circle>
+                </clipPath>
+                <radialGradient id="light" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0" stop-color="rgba(255, 255, 255, 0.8)"></stop>
+                    <stop offset="1" stop-color="rgba(255, 255, 255, 0"></stop>
+                </radialGradient>
+            </defs>
+            <polygon points="0 0 5 50 -5 50" fill="url(#tower)"></polygon>
+            <ellipse cx="0" cy="0" rx="300" ry="100" fill="url(#light)" clip-path=url(#clip)></ellipse>
 
-        var SVG_NS = 'http://www.w3.org/2000/svg';
-        var XLINK_NS = 'http://www.w3.org/1999/xlink';
+        </g>
+    </g>
+    <g id="re" transform="translate(0 50)" mask="url(#fading)">
+        <defs>
+            <mask id="fading">
+                <rect x="-400" y="0" width="800" height="300" fill="url(#fade)"></rect>
+                <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="rgba(255, 255, 255, 0.3)"></stop>
+                    <stop offset="0.5" stop-color="rgba(255, 255, 255, 0)"></stop>
+                </linearGradient>
+            </mask>
+        </defs>
+        <use xlink:href="#real" transform="scale(1, -1) translate(0 -50)"></use>
+    </g>
+</svg>
+<script>
 
-        var svg = document.querySelector('svg');
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var XLINK_NS = 'http://www.w3.org/1999/xlink';
+
+    var svg = document.querySelector('svg');
 
 
+    function render() {
+        var starRef = document.getElementById("star");
+        var starGroup = document.getElementById('star-group');
+        var num = 500;
+        var star;
 
-        function render() {
-            var starRef = document.getElementById("star");
-            var starGroup = document.getElementById('star-group');
-            var num = 500;
-            var star;
-
-            for (var i = 0; i < num; i++) {
-                star = use(starRef);
-                star.setAttribute('opacity', random(0.1, 0.4));
-                star.setAttribute('transform', 'translate(' + random(-400, 400) + ',' + random(-300, 50) + ')' + 'scale(' + random(0.1, 0.6) + ')');
-                starGroup.appendChild(star);
-            }
-
+        for (var i = 0; i < num; i++) {
+            star = use(starRef);
+            star.setAttribute('opacity', random(0.1, 0.4));
+            star.setAttribute('transform', 'translate(' + random(-400, 400) + ',' + random(-300, 50) + ')' + 'scale(' + random(0.1, 0.6) + ')');
+            starGroup.appendChild(star);
         }
 
-
-        function random(min, max) {
-            return min + (max - min) * Math.random();
-        }
+    }
 
 
-        function use(o) {
-            var _use = document.createElementNS(SVG_NS, 'use');
-            _use.setAttributeNS(XLINK_NS, 'xlink:href', '#' + o.id);
-            return _use;
-        }
+    function random(min, max) {
+        return min + (max - min) * Math.random();
+    }
 
-        render();
-    </script>
+
+    function use(o) {
+        var _use = document.createElementNS(SVG_NS, 'use');
+        _use.setAttributeNS(XLINK_NS, 'xlink:href', '#' + o.id);
+        return _use;
+    }
+
+    render();
+</script>
 </body>
 </html>
