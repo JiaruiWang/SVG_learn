@@ -192,7 +192,64 @@ sin() cos()  0
  - clip clip-path="url(#id)"
  - mask mask="url(#id)"
 
+##SVG动画
+ - SMIL
+  - `<animate>`、`<animateTransform>`、`<animateMotion>`
+  - attributeName、attributeType
+  - form、to、dur、repeatCount、fill
+  - calcMode
+ - 脚本动画
+
+###基本动画和变换动画
+###定位
+```
+<animate xlink:href="url(#rect1)"></animate>
+```
+```
+<rect x="0" ...>
+  <animate></animate>
+</rect>
+```
+
+###基本动画设置
+```
+<animate xlink:href="url(#rect1)"
+  attributeType="XML"
+  attributeName="x"
+  from="10"
+  to="110"
+  dur="3s"></animate>
+>
+```
+
+###变换动画
+```
+<animateTransform
+id=""
+attributeType="XML"
+attributeName="transform"
+type=""
+from=""
+to=""
+dur=""
+fill="remove | freeze">
+</animateTransform>
+```
+[变换动画累加](http://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/)
+
+###轨迹动画
+```
+<animateMotion dur="" rotate="auto">
+<mpath xlink:href="#path-id"></mpath>
+</animateMotion>
+```
+
+###脚本动画
+`requestAnimationFrame(...)`
 
 
 
+
+##相关学习资料
+[http://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/](http://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/)
 
